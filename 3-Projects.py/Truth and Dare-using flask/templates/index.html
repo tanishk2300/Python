@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Truth or Dare 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff9a9e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+ <!-- Apple-style font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Glass Card */
+        .glass {
+            width: min(380px, 100%);
+            max-width: 380px;
+            padding: 26px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 600;
+            margin-bottom: 18px;
+            font-size: 20px;
+        }
+
+        select, textarea {
+            width: 100%;
+            border-radius: 14px;
+            border: none;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 14px;
+            outline: none;
+            background: rgba(255,255,255,0.85);
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 12px;
+            border-radius: 14px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .truth {
+            background: #ffffff;
+            color: #333;
+        }
+
+        .dare {
+            background: linear-gradient(135deg, #ff5f6d, #ff3c6f);
+            color: #fff;
+        }
+
+        .submit {
+            background: #000;
+            color: white;
+        }
+
+        .question {
+            margin-top: 18px;
+            font-weight: 500;
+            font-size: 15px;
+            word-break: break-word;
+        }
+
+        footer {
+            margin-top: 14px;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* Small devices tweaks */
+        @media (max-width: 420px) {
+            .glass {
+                padding: 18px;
+            }
+            h1 {
+                font-size: 18px;
+            }
+            .btn {
+                padding: 13px;
+                font-size: 15px;
+            }
+            select, textarea {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="glass" role="main">
+        <h1>💖 Truth or Dare</h1>
+        
+        <form method="POST" autocomplete="off">
+            <select name="mode" aria-label="Choose mode">
+                <option value="1">Cute 😇</option>
+                <option value="2">Flirty 😏</option>
+                <option value="3">Romantic 🌹</option>
+                <option value="4">Bold 🔥</option>
+            </select>
+            
+            <button class="btn truth" type="submit" name="qtype" value="truth">😇 Truth</button>
+            <button class="btn dare" type="submit" name="qtype" value="dare">😈 Dare</button>
+            
+            {% if question %}
+            <div class="question" aria-live="polite">{{ question }}</div>
+            <textarea name="answer" placeholder="Type your reply here..." aria-label="Your answer"></textarea>
+            <button class="btn submit" type="submit">Send 💌</button>
+            {% endif %}
+        </form>
+        
+        <footer>
+            Made with ❤️
+        </footer>
+    </div>
+    
+</body>
+</html>

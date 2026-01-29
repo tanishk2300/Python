@@ -1,0 +1,6 @@
+MODE: 1
+TYPE: None
+question{'truth': {1: ['😇 What makes you smile instantly?'], 2: [], 3: [], 4: []}, 'dare': {1: [], 2: [], 3: [], 4: []}}
+ANSWER: hello 
+
+----------------------------------------
